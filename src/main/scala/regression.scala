@@ -21,14 +21,22 @@ object LR extends App {
     l.map(i => pow(i - m, 2)).sum / l.length - 1
   }  
 
-  def covariance(k: List[Double], l: List[Double]): Double = {
-    val z = k.zip(l)
-    val mk = mean(k)
-    val ml = mean(l)
-    z.map(i => (i._1 - mk) * (i._2 - ml)).sum / (k.length - 1)
+  def covariance(x: List[Double], y: List[Double]): Double = {
+    val z = x.zip(y)
+    val mk = mean(x)
+    val ml = mean(y)
+    z.map(i => (i._1 - mx) * (i._2 - my)).sum / (x.length - 1)
   }
 
-  def regression(k: List[Double], l: List[Double]): (Double, Double) = {
-    
+  /** Takes two list variables of type Double, and returns values in tuples pertinent to a linear regression. The values returned are: (Intercept, Slope) (more to be added as determined necessary) */
+  def regression(x: List[Double], y: List[Double]): (Double, Double) = {
+    val z = x.zip(y)
+    val mx = mean(x)
+    val my = mean(y)
+    val intercept = ((y.sum * x.map(i => i * i).sum) - (x.sum * z.map(i: (Double, Double) => i._1 * i._2).sum)) / ((x.length * x.map(i => i * i)) - pow(x.sum, 2))
+    val slope = z.map(i: (Double, Double) => (i._1 - mx) * (i._2 - my)).sum / pow(x.map(i => i - mx), 2)
+    (intercept, slope)
+  }
 
+  println(regression(x, y))
 }
