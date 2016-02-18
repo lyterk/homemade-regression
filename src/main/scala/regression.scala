@@ -2,7 +2,7 @@ package com.lyterk.LR
 
 import scala.math.pow
 
-object LR extends App {
+object LRegression extends App {
 
   val x: List[Double] = List(65.21, 64.75, 65.26, 65.76, 65.96)
   val y: List[Double] = List(67.25, 66.39, 66.12, 65.70, 66.64)
@@ -25,18 +25,16 @@ object LR extends App {
     val z = x.zip(y)
     val mk = mean(x)
     val ml = mean(y)
-    z.map(i => (i._1 - mx) * (i._2 - my)).sum / (x.length - 1)
+    z.map(i => (i._1 - mk) * (i._2 - ml)).sum / (x.length - 1)
   }
 
   /** Takes two list variables of type Double, and returns values in tuples pertinent to a linear regression. The values returned are: (Intercept, Slope) (more to be added as determined necessary) */
-  def regression(x: List[Double], y: List[Double]): (Double, Double) = {
-    val z = x.zip(y)
-    val mx = mean(x)
-    val my = mean(y)
-    val intercept = ((y.sum * x.map(i => i * i).sum) - (x.sum * z.map(i: (Double, Double) => i._1 * i._2).sum)) / ((x.length * x.map(i => i * i)) - pow(x.sum, 2))
-    val slope = z.map(i: (Double, Double) => (i._1 - mx) * (i._2 - my)).sum / pow(x.map(i => i - mx), 2)
+  def linearRegression(k: List[Double], l: List[Double]): (Double, Double) = {
+    val m = k.zip(l)
+    val mk = mean(k)
+    val ml = mean(l)
+    val intercept = ((l.sum * (k.map(i => i * i).sum)) - (k.sum * (m.map{case (a, b) => a * b}.sum))) / ((k.length * (k.map(i => i * i).sum) - pow(k.sum, 2)))
+    val slope = m.map{case (a, b) => (a - mk) * (b - ml)}.sum / pow(k.map(i => i - mk).sum, 2)
     (intercept, slope)
-  }
-
-  println(regression(x, y))
+  }      
 }
