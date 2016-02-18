@@ -1,4 +1,4 @@
-name := "Breeze Evaluation"
+name := "Homemade Regression"
 
 
 scalaVersion := "2.10.4"
