@@ -33,8 +33,10 @@ object LRegression extends App {
     val m = k.zip(l)
     val mk = mean(k)
     val ml = mean(l)
-    val intercept = ((l.sum * (k.map(i => i * i).sum)) - (k.sum * (m.map{case (a, b) => a * b}.sum))) / ((k.length * (k.map(i => i * i).sum) - pow(k.sum, 2)))
-    val slope = m.map{case (a, b) => (a - mk) * (b - ml)}.sum / pow(k.map(i => i - mk).sum, 2)
-    (intercept, slope)
-  }      
+    val slope = (m.map{case (a,b) => a * b}.sum - k.length * mk * ml) / (k.map(i => i * i).sum - k.length * mk * mk)
+    val intercept = ml - slope * mk    
+    (slope, intercept)
+  }
+
+  println(linearRegression(x,y))
 }
