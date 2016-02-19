@@ -1,0 +1,34 @@
+* Regression Project
+** Always able to work, including offline
+   I'm on a bus right now, and compilation is difficult without easy
+   access to the internet. This is a weakness, and I need a way around
+   it.
+*** SBT Local Dependencies: How?
+    I know that there is a way in SBT to declare that my dependencies
+    are in a local destination, and to search for them there. I have
+    Breeze installed, and I should call the version of scala that's
+    already installed.
+** Where to go?
+*** Pertinent values
+**** Sum of squares (model, residual, total)
+**** DF (M,R,T)
+**** MS (M,R,T)
+**** # of observations
+**** F-score
+     Will be difficult due to computationally intense nature of t & F scores.
+     Probably useful to make this.
+**** Prob > F
+**** R2
+**** Root MSE
+**** Coefficients
+**** Std. Error
+**** t-score
+**** P > |t|
+**** 95% CI
+*** Type matching
+    Limit accepted parameters to Lists of Doubles (or lists of Tuples,
+    eventually). Case classes are good for this.
+    This will almost certainly be the hardest part. Everything else involved in
+    this project only combines topics that I already know, and is basically only
+    repetition and math -> programming translation. This will be a small foray
+    into true FP and library writing.
