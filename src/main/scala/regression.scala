@@ -1,9 +1,10 @@
 package com.lyterk.LR
 
 import scala.math.pow
+import breeze.stats.distributions._
 
-val x: List[Double] = List(65.21, 64.75, 65.26, 65.76, 65.96)
-val y: List[Double] = List(67.25, 66.39, 66.12, 65.70, 66.64)
+// val x: List[Double] = List(65.21, 64.75, 65.26, 65.76, 65.96)
+// val y: List[Double] = List(67.25, 66.39, 66.12, 65.70, 66.64)
 
 /* This is a good direction to go for library writing, but for now I'm just going to assume that I'm taking a list of doubles.
  def types(l: List[T]): List[Double] = T match { // Also work on taking data types other than list.
@@ -12,7 +13,9 @@ val y: List[Double] = List(67.25, 66.39, 66.12, 65.70, 66.64)
  }
  */
 
-object LinearRegression(x: List[Double], y: List[Double) {
+class LinearRegression(x: List[Double], y: List[Double]) {
+
+  val df = ?
 
   lazy val z = x.zip(y)
   lazy val mux = mean(x)
@@ -46,7 +49,18 @@ object LinearRegression(x: List[Double], y: List[Double) {
     (intercept, slope)
   }  
 
-  def explainedSumSquares(
+  lazy val explainedSumSquares = ?
+  lazy val residualSumSquares = ?
 
-  println(linearRegression(x,y))
+  lazy val stdErrorAlpha = ?
+  lazy val stdErrorBeta = ?
+
+  lazy val tStatAlpha = ?
+  lazy val tStatBeta = ?
+
+  lazy val r2 = ?
+  lazy val adjR2 = ?
+
+  lazy val fStat = ?
+  lazy val oneTailF = ?  
 }

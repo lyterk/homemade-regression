@@ -17,7 +17,7 @@
 **** F-score
      Will be difficult due to computationally intense nature of t & F scores.
      Probably useful to make this.
-**** Prob > F
+**** DONE Prob > F
 **** R2
 **** Root MSE
 **** Coefficients
